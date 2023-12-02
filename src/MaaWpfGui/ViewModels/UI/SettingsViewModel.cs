@@ -538,6 +538,13 @@ namespace MaaWpfGui.ViewModels.UI
                 new CombinedData { Display = LocalizationHelper.GetString("AsYourHeartDesires"), Value = "随心所欲" },
             };
 
+            AutoRecruitSelectExtraTagsList = new List<CombinedData>
+            {
+                new CombinedData { Display = LocalizationHelper.GetString("DefaultNoExtraTags"), Value = "0" },
+                new CombinedData { Display = LocalizationHelper.GetString("SelectExtraTags"), Value = "1" },
+                new CombinedData { Display = LocalizationHelper.GetString("SelectExtraOnlyRareTags"), Value = "2" },
+            };
+
             ClientTypeList = new List<CombinedData>
             {
                 new CombinedData { Display = LocalizationHelper.GetString("NotSelected"), Value = string.Empty },
@@ -1268,6 +1275,11 @@ namespace MaaWpfGui.ViewModels.UI
         public List<CombinedData> RoguelikeRolesList { get; set; }
 
         // public List<CombData> RoguelikeCoreCharList { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of auto recruit selecting extra tags.
+        /// </summary>
+        public List<CombinedData> AutoRecruitSelectExtraTagsList { get; set; }
 
         /// <summary>
         /// Gets or sets the list of the client types.
@@ -2408,18 +2420,18 @@ namespace MaaWpfGui.ViewModels.UI
             set => SetAndNotify(ref _useExpedited, value);
         }
 
-        private bool _selectExtraTags = Convert.ToBoolean(ConfigurationHelper.GetValue(ConfigurationKeys.SelectExtraTags, bool.FalseString));
+        private string _selectExtraTags = ConfigurationHelper.GetValue(ConfigurationKeys.SelectExtraTags, "0");
 
         /// <summary>
-        /// Gets or sets a value indicating whether three tags are alway selected when selecting tags.
+        /// Gets or sets a value indicating three tags are alway selected or select only rare tags as many as possible .
         /// </summary>
-        public bool SelectExtraTags
+        public string SelectExtraTags
         {
             get => _selectExtraTags;
             set
             {
                 SetAndNotify(ref _selectExtraTags, value);
-                ConfigurationHelper.SetValue(ConfigurationKeys.SelectExtraTags, value.ToString());
+                ConfigurationHelper.SetValue(ConfigurationKeys.SelectExtraTags, value);
             }
         }
 
