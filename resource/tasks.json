@@ -5737,7 +5737,7 @@
         ]
     },
     "CreditShop-CreditOcr": {
-        "algorithm": "OcrDetect",
+        "algorithm": "Number",
         "isAscii": true,
         "text": [],
         "roi": [
@@ -5745,6 +5745,17 @@
             26,
             57,
             27
+        ]
+    },
+    "CreditShop-DiscountOcr": {
+        "baseTask": "NumberOcrReplace",
+        "isAscii": true,
+        "text": [],
+        "roi": [
+            1053,
+            104,
+            135,
+            127
         ]
     },
     "CreditShop-ProductName": {
@@ -7585,7 +7596,7 @@
     "InfrastTrainingIdle": {
         "algorithm": "OcrDetect",
         "text": [ "空闲中" ],
-        "action":"DoNothing",
+        "action": "DoNothing",
         "roi": [
             350,
             600,
@@ -7597,7 +7608,7 @@
         "baseTask": "InfrastTrainingIdle",
         "text": [ "训练完成" ],
         "action": "ClickSelf",
-        "postDelay":1000,
+        "postDelay": 1000,
         "next": [
             "CloseTaskAward"
         ]
